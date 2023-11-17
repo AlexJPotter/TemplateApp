@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateApp.Server", "src\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateApp.Client", "src\TemplateApp.Client\TemplateApp.Client.csproj", "{5BC8DCBE-5FCC-4AE5-9CD7-A9946297028F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31655148-DE49-4240-8824-E266E8A9F47F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E7A38FB0-ED2B-49A3-9C5E-CE253EC33F10}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BC8DCBE-5FCC-4AE5-9CD7-A9946297028F} = {31655148-DE49-4240-8824-E266E8A9F47F}
+		{AA20F331-D86E-4327-8A28-BA729A607D3D} = {31655148-DE49-4240-8824-E266E8A9F47F}
 	EndGlobalSection
 EndGlobal
