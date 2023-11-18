@@ -16,7 +16,7 @@ There's a lot to do...
 
 - [x] License
 - [x] Scaffold Blazor Web App
-- [ ] Basic IaC setup with Bicep
+- [x] Basic IaC setup with Bicep
 - [ ] Basic CI/CD setup with Azure DevOps
 - [ ] SQL Server and EF Core setup
 - [ ] API setup with FastEndpoints
