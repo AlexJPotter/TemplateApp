@@ -25,3 +25,24 @@ stages:
               PathToPublish: '$(Build.SourcesDirectory)/output'
               ArtifactName: 'build-output'
               publishLocation: 'Container'
+  - stage: 'int'
+    displayName: 'INT'
+    dependsOn: [ 'build' ]
+    
+    jobs:
+      - deployment: 'INT'
+        environment:
+          name: 'INT'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureRmWebAppDeployment@4
+                  displayName: 'Deploy to App Service'
+                  inputs:
+                    ConnectionType: 'AzureRM'
+                    azureSubscription: 'TemplateAppSC'
+                    appType: 'webAppLinux'
+                    WebAppName: 'templateapp-int-webapp'
+                    packageForLinux: '$(Agent.BuildDirectory)/build-output/App'
+                    RuntimeStack: 'DOTNETCORE|8.0'
