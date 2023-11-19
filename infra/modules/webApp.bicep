@@ -1,8 +1,11 @@
 param location string
 param projectName string
+param environment string
 
-var webAppName = '${projectName}-webapp'
-var appServicePlanName = '${projectName}-appserviceplan'
+var resourceNamePrefix = '${projectName}-${environment}'
+
+var webAppName = '${resourceNamePrefix}-webapp'
+var appServicePlanName = '${resourceNamePrefix}-appserviceplan'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: appServicePlanName
