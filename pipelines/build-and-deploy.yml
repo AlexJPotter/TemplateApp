@@ -4,11 +4,22 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+  - stage: 'build'
+    displayName: 'Build & Publish'
+    jobs:
+      - job: 'Build'
+        steps:
+          - task: UseDotNet@2
+            displayName: 'Use .NET 8.x'
+            inputs:
+              packageType: 'sdk'
+              version: '8.x'
+          - task: PowerShell@2
+            inputs:
+              filePath: './build.ps1'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/output'
+              ArtifactName: 'build-output'
+              publishLocation: 'Container'
