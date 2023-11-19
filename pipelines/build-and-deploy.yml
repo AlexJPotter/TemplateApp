@@ -16,10 +16,12 @@ stages:
               packageType: 'sdk'
               version: '8.x'
           - task: PowerShell@2
+            displayName: 'Run Build and Publish with NUKE'
             inputs:
               filePath: './build.ps1'
           - task: PublishBuildArtifacts@1
+            displayName: 'Publish Build Artifacts'
             inputs:
-              PathtoPublish: '$(Build.ArtifactStagingDirectory)/output'
+              PathToPublish: '$(Build.SourcesDirectory)/output'
               ArtifactName: 'build-output'
               publishLocation: 'Container'
