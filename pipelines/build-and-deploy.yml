@@ -34,3 +34,21 @@ stages:
           environment: 'INT'
           serviceConnectionName: 'TemplateAppSC'
           webAppName: 'templateapp-int-webapp'
+  - stage: 'QA'
+    displayName: 'QA'
+    dependsOn: [ 'INT' ]
+    jobs:
+      - template: 'deploy-template.yml'
+        parameters:
+          environment: 'QA'
+          serviceConnectionName: 'TemplateAppSC'
+          webAppName: 'templateapp-qa-webapp'
+  - stage: 'UAT'
+    displayName: 'UAT'
+    dependsOn: [ 'QA' ]
+    jobs:
+      - template: 'deploy-template.yml'
+        parameters:
+          environment: 'UAT'
+          serviceConnectionName: 'TemplateAppSC'
+          webAppName: 'templateapp-uat-webapp'
