@@ -17,8 +17,8 @@ There's a lot to do...
 - [x] License
 - [x] Scaffold Blazor Web App
 - [x] Basic IaC setup with Bicep
-- [ ] Build definition using NUKE
-- [ ] Basic CI/CD setup with Azure DevOps
+- [x] Build definition using NUKE
+- [x] Basic CI/CD setup with Azure DevOps
 - [ ] SQL Server and EF Core setup
 - [ ] API setup with FastEndpoints
 - [ ] API validation with FluentValidation
