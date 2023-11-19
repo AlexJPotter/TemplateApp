@@ -1,0 +1,25 @@
+parameters:
+  - name: environment
+    type: string
+  - name: serviceConnectionName
+    type: string
+  - name: webAppName
+    type: string
+
+jobs:
+  - deployment: ${{ parameters.environment }}
+    environment:
+      name: ${{ parameters.environment }}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: AzureRmWebAppDeployment@4
+              displayName: 'Deploy to App Service'
+              inputs:
+                ConnectionType: 'AzureRM'
+                azureSubscription: ${{ parameters.serviceConnectionName }}
+                appType: 'webAppLinux'
+                WebAppName: ${{ parameters.webAppName }}
+                packageForLinux: '$(Agent.BuildDirectory)/build-output/App'
+                RuntimeStack: 'DOTNETCORE|8.0'
